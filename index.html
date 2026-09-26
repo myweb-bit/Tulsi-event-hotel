@@ -2,16 +2,15 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tulsi Events & Hotels Pvt. Ltd</title>
-    <!-- Premium Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="pageTitle">Tulsi Events & Hotels</title>
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Ultra Luxury Midnight Navy & 24K Royal Gold Theme */
             --bg-deep: #030712; 
             --bg-surface: rgba(11, 21, 40, 0.85);
             --primary-navy: #0b1528;
@@ -31,399 +30,257 @@
             background-color: var(--bg-deep); 
             color: var(--text-light); 
             overflow-x: hidden; 
-            position: relative;
+            min-height: 100vh;
         }
         h1, h2, h3, .royal-title { font-family: 'Cinzel', serif; letter-spacing: 1px; }
 
-        /* --- 1. ROYAL INTRO OVERLAY --- */
-        #intro-overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, #0f1c36 0%, #02050b 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            text-align: center;
-            padding: 20px;
-            transition: opacity 1s cubic-bezier(0.77, 0, 0.175, 1), visibility 1s;
-        }
-        .intro-mandala {
-            width: 160px; height: 160px;
-            animation: introSpin 14s linear infinite;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 0 25px var(--gold-glow));
-        }
-        @keyframes introSpin { 100% { transform: rotate(360deg); } }
-        .intro-title {
-            color: var(--gold-bright);
-            font-size: clamp(2rem, 5.5vw, 3.4rem);
-            margin-bottom: 12px;
-            opacity: 0;
-            transform: translateY(25px);
-            animation: introReveal 1.2s ease forwards 0.4s;
-            text-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
-        }
-        .intro-tagline {
-            color: #cbd5e1;
-            font-size: 1.25rem;
-            font-style: italic;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: introReveal 1.2s ease forwards 0.8s;
-        }
-        @keyframes introReveal { to { opacity: 1; transform: translateY(0); } }
-
-        /* --- 2. 3D SCROLL-SYNCED CHAKRA --- */
-        .scroll-mandala-container {
-            position: fixed;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 130vw; height: 130vw;
-            max-width: 950px; max-height: 950px;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.28;
-            will-change: transform;
-        }
-        .scroll-mandala-container svg {
-            width: 100%; height: 100%;
-            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.2));
-        }
-
-        header, .main-container, footer, .call-btn, .chat-btn, .chat-window {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Navbar */
+        /* HEADER */
         header { 
-            background: rgba(4, 9, 20, 0.92); 
+            background: rgba(4, 9, 20, 0.94); 
             backdrop-filter: blur(16px);
-            padding: 14px 28px; 
+            padding: 12px 20px; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             position: sticky; top: 0; 
             box-shadow: 0 4px 30px rgba(0,0,0,0.8); 
             border-bottom: 1px solid var(--border-gold);
+            z-index: 100;
         }
         .logo { 
             color: var(--gold-bright); 
-            font-size: 1.35rem; 
+            font-size: 1.25rem; 
             font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
             cursor: pointer;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
         }
         .header-phone { 
             background: linear-gradient(135deg, var(--gold-bright), var(--gold)); 
             color: #030712; 
-            padding: 8px 20px; 
+            padding: 7px 16px; 
             border-radius: 30px; 
             font-weight: 700; 
-            font-size: 0.88rem; 
+            font-size: 0.85rem; 
             text-decoration: none; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
             box-shadow: 0 4px 15px var(--gold-glow);
-            transition: transform 0.3s ease;
         }
-        .header-phone:hover { transform: scale(1.05); }
 
-        /* Hero */
+        /* HERO SECTION */
         .hero { 
-            min-height: 75vh; 
+            min-height: 65vh; 
             background: radial-gradient(circle at center, rgba(16, 29, 56, 0.7) 0%, rgba(3, 7, 18, 0.98) 100%);
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center; 
             text-align: center; 
-            padding: 60px 20px; 
+            padding: 50px 18px; 
         }
         .badge { 
             background: rgba(212, 175, 55, 0.12); 
             border: 1px solid var(--gold);
             color: var(--gold-bright); 
-            padding: 8px 24px; 
+            padding: 6px 20px; 
             border-radius: 40px; 
             font-weight: 600; 
-            font-size: 0.9rem; 
-            margin-bottom: 22px; 
+            font-size: 0.85rem; 
+            margin-bottom: 18px; 
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         .hero h1 { 
-            font-size: clamp(2.4rem, 6vw, 4.4rem); 
+            font-size: clamp(2rem, 5vw, 3.8rem); 
             margin-bottom: 14px; 
             line-height: 1.2;
             color: #ffffff;
             text-shadow: 0 4px 30px rgba(0,0,0,0.8);
         }
-        .hero h1 span { 
-            background: linear-gradient(135deg, var(--gold-bright), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
         .hero p { 
-            font-size: 1.35rem; 
+            font-size: 1.2rem; 
             color: var(--gold); 
             font-style: italic;
         }
 
-        /* Venues Section */
-        .section { padding: 70px 20px 100px; text-align: center; }
+        /* VENUES SECTION */
+        .section { padding: 50px 18px 80px; text-align: center; }
         .section h2 { 
-            font-size: 2.6rem; 
-            margin-bottom: 12px; 
+            font-size: 2.2rem; 
+            margin-bottom: 10px; 
             color: var(--gold-bright);
         }
         .section-subtitle {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 50px;
+            font-size: 0.95rem;
+            margin-bottom: 40px;
         }
 
         .venue-hub-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 35px; 
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); 
+            gap: 25px; 
             max-width: 1200px; 
             margin: auto; 
         }
         .venue-hub-card { 
             background: var(--bg-surface); 
             backdrop-filter: blur(14px);
-            border-radius: 24px; 
+            border-radius: 20px; 
             overflow: hidden; 
             box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
             border: 1px solid var(--border-gold);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.3s ease;
             text-align: left;
         }
         .venue-hub-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-6px);
             border-color: var(--gold);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 30px var(--gold-glow);
+            box-shadow: 0 15px 35px var(--gold-glow);
         }
         .venue-hub-img {
-            width: 100%; height: 260px; object-fit: cover;
-            transition: transform 0.6s ease;
+            width: 100%; height: 220px; object-fit: cover;
         }
-        .venue-hub-card:hover .venue-hub-img { transform: scale(1.08); }
-        
-        .venue-hub-body { padding: 28px 24px; }
-        .venue-hub-body h3 { font-size: 1.45rem; color: #ffffff; margin-bottom: 10px; }
-        .venue-hub-location { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 22px; display: flex; align-items: center; gap: 8px; }
+        .venue-hub-body { padding: 20px; }
+        .venue-hub-body h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 8px; }
+        .venue-hub-location { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px; }
         
         .view-venue-btn {
-            background: linear-gradient(135deg, var(--primary-accent), var(--primary-navy));
-            border: 1px solid var(--border-gold);
-            color: var(--gold-bright);
-            padding: 13px 20px;
-            border-radius: 12px;
+            background: var(--gold);
+            border: none;
+            color: #030712;
+            padding: 11px 18px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .venue-hub-card:hover .view-venue-btn {
-            background: var(--gold);
-            color: #030712;
-            border-color: var(--gold);
+            font-weight: 700;
+            font-size: 0.9rem;
         }
 
-        /* --- VENUE DETAIL PAGE VIEW --- */
+        /* VENUE DETAIL VIEW */
         #venue-detail-view {
             display: none;
-            padding: 40px 20px 80px;
+            padding: 25px 18px 60px;
             max-width: 1100px;
             margin: auto;
-            animation: fadeInDetail 0.5s ease forwards;
+            animation: fadeInDetail 0.3s ease forwards;
         }
-        @keyframes fadeInDetail { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDetail { from { opacity: 0; } to { opacity: 1; } }
         
         .back-nav-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: var(--gold);
             color: #030712;
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-weight: 700;
             border: none;
             cursor: pointer;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px var(--gold-glow);
-            transition: transform 0.2s;
+            margin-bottom: 20px;
         }
-        .back-nav-btn:hover { transform: translateX(-5px); }
-
         .detail-card {
             background: var(--bg-surface);
-            border-radius: 26px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
             border: 1px solid var(--border-gold);
-            margin-bottom: 50px;
+            margin-bottom: 35px;
         }
-        .detail-img-banner { width: 100%; height: 440px; object-fit: cover; }
-        .detail-content { padding: 45px 35px; }
-        .detail-title { font-size: 2.5rem; color: var(--gold-bright); margin-bottom: 12px; }
-        .detail-address { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
+        .detail-img-banner { width: 100%; height: 350px; object-fit: cover; }
+        .detail-content { padding: 30px 22px; }
+        .detail-title { font-size: 2rem; color: var(--gold-bright); margin-bottom: 10px; }
+        .detail-address { font-size: 1rem; color: var(--text-muted); margin-bottom: 20px; }
         
         .about-box {
             background: rgba(3, 7, 18, 0.6);
             border: 1px solid var(--border-gold);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 22px;
         }
-        .about-box h3 { color: var(--gold-bright); font-size: 1.25rem; margin-bottom: 12px; }
-        .about-box p { color: #cbd5e1; line-height: 1.8; font-size: 1rem; white-space: pre-line; }
+        .about-box h3 { color: var(--gold-bright); font-size: 1.1rem; margin-bottom: 8px; }
+        .about-box p { color: #cbd5e1; line-height: 1.7; font-size: 0.95rem; white-space: pre-line; }
 
-        .detail-cta-row { display: flex; gap: 18px; flex-wrap: wrap; }
         .detail-call-btn {
             background: #25D366;
             color: white;
-            padding: 14px 30px;
-            border-radius: 14px;
+            padding: 12px 22px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            gap: 8px;
         }
 
-        /* Venue-Specific Gallery Grid */
-        .venue-gallery-section { margin-top: 40px; }
-        .venue-gallery-title { font-size: 2rem; color: var(--gold-bright); margin-bottom: 25px; text-align: left; }
+        /* GALLERY GRID */
+        .venue-gallery-title { font-size: 1.7rem; color: var(--gold-bright); margin-bottom: 20px; text-align: left; }
         .venue-gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
         }
         .venue-gallery-card {
             background: var(--bg-surface);
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-gold);
-            transition: all 0.3s ease;
         }
-        .venue-gallery-card:hover {
-            transform: scale(1.03);
-            border-color: var(--gold);
-            box-shadow: 0 10px 25px var(--gold-glow);
-        }
-        .venue-gallery-card img {
-            width: 100%; height: 200px; object-fit: cover;
-        }
-        .venue-gallery-caption {
-            padding: 12px;
-            font-size: 0.9rem;
-            color: #cbd5e1;
-            text-align: center;
-            font-weight: 500;
-        }
+        .venue-gallery-card img { width: 100%; height: 170px; object-fit: cover; }
+        .venue-gallery-caption { padding: 8px; font-size: 0.85rem; color: #cbd5e1; text-align: center; }
 
-        /* Floating Trigger Buttons */
-        .call-btn { position: fixed; bottom: 30px; left: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; font-size: 28px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); text-decoration: none; border: 2px solid white; z-index: 1000; animation: pulseCall 2s infinite; }
-        @keyframes pulseCall { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-
-        .chat-btn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(135deg, var(--gold-bright), var(--gold)); color: #030712; width: 65px; height: 65px; border-radius: 50%; font-size: 30px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 8px 25px var(--gold-glow); border: 2px solid white; z-index: 1000; transition: all 0.3s; }
-        .chat-btn:hover { transform: scale(1.1) rotate(5deg); }
-
-        /* Chat Window */
-        .chat-window { position: fixed; bottom: 110px; right: 30px; width: 360px; height: 500px; background: #0b1528; border-radius: 22px; box-shadow: 0 20px 50px rgba(0,0,0,0.85); display: none; flex-direction: column; overflow: hidden; border: 1px solid var(--border-gold); z-index: 999; }
-        .chat-header { background: linear-gradient(135deg, #162646, #0b1528); color: var(--gold-bright); padding: 18px; text-align: center; font-weight: 700; position: relative; border-bottom: 1px solid var(--border-gold); }
-        .close-chat { position: absolute; right: 18px; top: 18px; cursor: pointer; color: white; }
-        .chat-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #050b14; }
-        .msg { padding: 12px 16px; border-radius: 16px; max-width: 85%; font-size: 0.9rem; line-height: 1.45; word-wrap: break-word; animation: popIn 0.3s ease forwards; }
-        @keyframes popIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
-        .msg.bot { background: rgba(255,255,255,0.06); color: #f8fafc; align-self: flex-start; border: 1px solid rgba(255,255,255,0.08); }
-        .msg.user { background: var(--primary-accent); color: white; align-self: flex-end; border: 1px solid var(--border-gold); }
+        /* FOOTER */
+        footer { 
+            background: #02050b; color: var(--text-muted); 
+            padding: 45px 18px 30px; text-align: center; border-top: 1px solid var(--border-gold); 
+        }
+        footer h2 { color: var(--gold-bright); margin-bottom: 8px; font-size: 1.3rem; }
+        footer p { margin: 5px 0; font-size: 0.9rem; }
         
-        .chat-input { display: flex; padding: 12px; border-top: 1px solid var(--border-gold); background: #0b1528; }
-        .chat-input input { flex: 1; padding: 10px 14px; background: rgba(255,255,255,0.06); border: 1px solid var(--border-gold); border-radius: 25px; color: white; outline: none; }
-        .chat-input button { background: var(--gold); color: #030712; border: none; width: 42px; height: 42px; margin-left: 8px; border-radius: 50%; cursor: pointer; font-weight: bold; }
+        .social-links { 
+            display: flex; justify-content: center; gap: 15px; 
+            margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(212, 175, 55, 0.15); 
+        }
+        .social-icon { 
+            width: 40px; height: 40px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-gold); 
+            display: none; align-items: center; justify-content: center; text-decoration: none; 
+        }
+        .social-icon svg { width: 18px; height: 18px; fill: var(--gold-bright); }
 
-        /* VIP Footer & Dynamic Social Links */
-        footer { background: #02050b; color: var(--text-muted); padding: 60px 20px 40px; text-align: center; border-top: 1px solid var(--border-gold); }
-        footer h2 { color: var(--gold-bright); margin-bottom: 10px; }
-        footer p { margin: 6px 0; font-weight: 300; }
-        
-        .social-links {
-            display: flex; justify-content: center; align-items: center; gap: 20px; 
-            margin-top: 35px; padding-top: 30px; 
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        /* FLOATING CALL BUTTON */
+        .call-btn { 
+            position: fixed; bottom: 25px; left: 20px; 
+            background: #25D366; color: white; width: 55px; height: 55px; 
+            border-radius: 50%; font-size: 26px; display: flex; 
+            align-items: center; justify-content: center; text-decoration: none; 
+            border: 2px solid white; z-index: 1000; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); 
         }
-        .social-icon {
-            width: 52px; height: 52px; border-radius: 50%; 
-            background: rgba(255, 255, 255, 0.04); 
-            border: 1px solid var(--border-gold); 
-            display: none; align-items: center; justify-content: center; 
-            transition: all 0.4s ease; text-decoration: none;
-        }
-        .social-icon svg { width: 22px; height: 22px; fill: var(--gold-bright); transition: all 0.4s ease; }
-        .social-icon:hover { 
-            background: var(--gold); transform: translateY(-5px); 
-            box-shadow: 0 10px 25px var(--gold-glow); 
-        }
-        .social-icon:hover svg { fill: #030712; }
 
         @media (max-width: 768px) {
-            .detail-img-banner { height: 260px; }
-            .detail-title { font-size: 1.8rem; }
-            .chat-window { width: calc(100vw - 40px); right: 20px; left: 20px; bottom: 95px; height: 65vh; }
+            .detail-img-banner { height: 230px; }
+            .detail-title { font-size: 1.6rem; }
+            .hero h1 { font-size: 2.1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. ROYAL INTRO OVERLAY WITH SFX -->
-    <div id="intro-overlay">
-        <svg class="intro-mandala" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(212, 175, 55, 0.4)" stroke-width="1"/>
-            <path d="M50 5 L53 47 L95 50 L53 53 L50 95 L47 53 L5 50 L47 47 Z" fill="rgba(212, 175, 55, 0.2)" stroke="var(--gold)" stroke-width="0.8"/>
-            <circle cx="50" cy="50" r="22" fill="none" stroke="var(--gold-bright)" stroke-width="0.8" stroke-dasharray="3,3"/>
-        </svg>
-        <h1 class="intro-title">Tulsi Events & Hotels</h1>
-        <p class="intro-tagline">"घर जैसा व्यवहार पाएँ..."</p>
-    </div>
-
-    <!-- 2. SCROLL-SYNCED 3D CHAKRA -->
-    <div class="scroll-mandala-container" id="scrollChakra">
-        <svg viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(212, 175, 55, 0.15)" stroke-width="0.5"/>
-            <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.3" stroke-dasharray="2,2"/>
-            <path d="M50 2 L54 46 L98 50 L54 54 L50 98 L46 54 L2 50 L46 46 Z" fill="rgba(212, 175, 55, 0.05)" stroke="rgba(212, 175, 55, 0.2)" stroke-width="0.3"/>
-            <path d="M50 15 L58 42 L85 50 L58 58 L50 85 L42 58 L15 50 L42 42 Z" fill="rgba(212, 175, 55, 0.08)" />
-        </svg>
-    </div>
-
+    <!-- HEADER -->
     <header>
-        <div class="logo" onclick="playClick(); showHubView()">✨ Tulsi Events</div>
-        <a href="tel:8651222111" class="header-phone" id="userHeaderPhone" onclick="playClick()">📞 8651222111</a>
+        <div class="logo" id="siteLogo" onclick="showHubView()">✨ Tulsi Events</div>
+        <a href="tel:8651222111" class="header-phone" id="userHeaderPhone">📞 8651222111</a>
     </header>
 
     <div class="main-container">
-        <!-- 3. MAIN VENUES HUB -->
+        <!-- HUB VIEW -->
         <div id="venue-hub-view">
             <section class="hero">
-                <div class="badge">Banquet Hall & Hotel</div>
-                <h1>Tulsi Events & Hotels <span>Pvt. Ltd</span></h1>
-                <p>"घर जैसा व्यवहार पाएँ..."</p>
+                <div class="badge" id="heroBadge">Banquet Hall & Hotel</div>
+                <h1 id="heroTitle">Tulsi Events & Hotels Pvt. Ltd</h1>
+                <p id="heroTagline">"घर जैसा व्यवहार पाएँ..."</p>
             </section>
 
             <section class="section">
@@ -436,9 +293,9 @@
             </section>
         </div>
 
-        <!-- 4. VENUE DETAILED VIEW (WITH ABOUT & MULTI-GALLERY) -->
+        <!-- DETAIL VIEW -->
         <div id="venue-detail-view">
-            <button class="back-nav-btn" onclick="playClick(); showHubView()">← All Venues (वापस जाएं)</button>
+            <button class="back-nav-btn" onclick="showHubView()">← All Venues (वापस जाएं)</button>
             <div class="detail-card">
                 <img id="detailImg" src="" alt="Venue" class="detail-img-banner">
                 <div class="detail-content">
@@ -450,18 +307,10 @@
                         <p id="detailDesc">वेन्यू की जानकारी लोड हो रही है...</p>
                     </div>
 
-                    <div class="detail-cta-row">
-                        <a id="detailCall" href="tel:8651222111" class="detail-call-btn" onclick="playClick()">
-                            📞 Call Venue Directly
-                        </a>
-                        <button class="back-nav-btn" style="margin-bottom:0;" onclick="playClick(); toggleChat()">
-                            💬 Ask AI for Booking Details
-                        </button>
-                    </div>
+                    <a id="detailCall" href="tel:8651222111" class="detail-call-btn">📞 Call Venue Directly</a>
                 </div>
             </div>
 
-            <!-- Venue Specific Photo Gallery -->
             <div class="venue-gallery-section">
                 <h3 class="venue-gallery-title royal-title">📸 Venue Photo Gallery</h3>
                 <div class="venue-gallery-grid" id="venueSpecificGallery"></div>
@@ -469,108 +318,27 @@
         </div>
     </div>
 
-    <!-- 5. FOOTER WITH DYNAMIC SOCIAL LINKS -->
+    <!-- FOOTER -->
     <footer>
-        <h2>Tulsi Events & Hotels Pvt. Ltd</h2>
-        <p>"घर जैसा व्यवहार पाएँ..."</p>
-        <p>📍 Siwan, Bihar | 📞 <span id="userFooterPhone">8651222111</span></p>
+        <h2 id="footerName">Tulsi Events & Hotels Pvt. Ltd</h2>
+        <p id="footerTagline">"घर जैसा व्यवहार पाएँ..."</p>
+        <p>📍 <span id="footerAddress">Siwan, Bihar</span> | 📞 <span id="userFooterPhone">8651222111</span></p>
 
         <div class="social-links">
-            <a href="#" target="_blank" id="userInstagramLink" class="social-icon" title="Instagram" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-
-            <a href="#" target="_blank" id="userFacebookLink" class="social-icon" title="Facebook" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-            </a>
-
-            <a href="#" id="userEmailBtn" class="social-icon" title="Email Us" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            </a>
-
-            <a href="tel:8651222111" id="userSocialCall" class="social-icon" title="Call Us" style="display:flex;" onclick="playClick()">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            </a>
+            <a href="#" target="_blank" id="userInstagramLink" class="social-icon" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+            <a href="#" target="_blank" id="userFacebookLink" class="social-icon" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg></a>
+            <a href="#" target="_blank" id="userYoutubeLink" class="social-icon" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
         </div>
     </footer>
 
-    <!-- Floating Call & Chat Buttons -->
-    <a href="tel:8651222111" class="call-btn" id="userFloatCall" onclick="playClick()">📞</a>
-    <div class="chat-btn" onclick="playClick(); toggleChat()">✨</div>
+    <!-- FLOATING CALL BUTTON -->
+    <a href="tel:8651222111" class="call-btn" id="userFloatCall">📞</a>
 
-    <!-- AI Chat Window -->
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            Tulsi Assistant
-            <span class="close-chat" onclick="playClick(); toggleChat()">✖</span>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="msg bot" id="botGreeting">Namaste! 🙏 Tulsi Events & Hotels me aapka swagat hai. Mai aapki booking ya venues ke baare me kaise madad kar sakta hu?</div>
-        </div>
-        <div class="chat-input" id="chatInputArea">
-            <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleEnter(event)">
-            <button onclick="playClick(); sendMessage()">
-                <svg viewBox="0 0 24 24" style="width:20px; height:20px; fill:#030712; transform:translateX(2px);"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-            </button>
-        </div>
-    </div>
-
-    <!-- Firebase SDK (v8) -->
+    <!-- FIREBASE SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
     <script>
-        // --- SOFT HAPTIC CLICK SOUND EFFECT ---
-        function playClick() {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.type = "sine";
-                osc.frequency.setValueAtTime(650, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.05);
-                gain.gain.setValueAtTime(0.08, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start();
-                osc.stop(ctx.currentTime + 0.05);
-            } catch(e) {}
-        }
-
-        // Royal Intro SFX
-        const sfx = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
-        sfx.volume = 0.35;
-
-        window.addEventListener('load', () => {
-            sfx.play().catch(() => {});
-            setTimeout(() => {
-                const overlay = document.getElementById('intro-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '0';
-                    setTimeout(() => overlay.style.display = 'none', 1000);
-                }
-            }, 2300);
-        });
-
-        // Scroll-driven Chakra Rotation
-        let currentRotation = 0;
-        let lastScrollY = window.scrollY;
-
-        window.addEventListener('scroll', () => {
-            const currentScrollY = window.scrollY;
-            const delta = currentScrollY - lastScrollY;
-            lastScrollY = currentScrollY;
-
-            currentRotation += delta * 0.25;
-
-            const chakra = document.getElementById('scrollChakra');
-            if (chakra) {
-                chakra.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
-            }
-        }, { passive: true });
-
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDySVpj8IkJsvw0Oy75N9FC918f7TDAo9g",
             authDomain: "mozarc-72cbd.firebaseapp.com",
@@ -585,62 +353,74 @@
 
         let loadedVenues = {};
 
-        // 1. SYNC SOCIAL CONFIG & GROQ KEY FROM ADMIN
-        let dynamicGroqKey = "";
-        db.ref('tulsi_config').on('value', (snapshot) => {
-            if (snapshot.exists()) {
-                const conf = snapshot.val();
+        // HTML & SPAN Cleaner function taaki koi tag na dikhe
+        function cleanText(text) {
+            if(!text) return '';
+            return text.replace(/<[^>]*>/g, '').replace(/&amp;/gi, '&').replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').trim();
+        }
 
-                if (conf.groqKey && conf.groqKey.trim() !== '') {
-                    dynamicGroqKey = conf.groqKey.trim();
+        // 1. DYNAMIC CONFIG SYNC
+        db.ref('tulsi_config').on('value', (snap) => {
+            if (snap.exists()) {
+                const conf = snap.val();
+
+                if (conf.siteName) {
+                    const cleanName = cleanText(conf.siteName);
+                    document.getElementById('siteLogo').innerText = "✨ " + cleanName;
+                    document.getElementById('footerName').innerText = cleanName;
+                    document.getElementById('pageTitle').innerText = cleanName;
+                }
+                if (conf.tagline) {
+                    const cleanTag = cleanText(conf.tagline);
+                    document.getElementById('heroTagline').innerText = `"${cleanTag}"`;
+                    document.getElementById('footerTagline').innerText = `"${cleanTag}"`;
+                }
+                if (conf.heroBadge) document.getElementById('heroBadge').innerText = cleanText(conf.heroBadge);
+                if (conf.heroTitle) document.getElementById('heroTitle').innerText = cleanText(conf.heroTitle);
+                if (conf.address) document.getElementById('footerAddress').innerText = cleanText(conf.address);
+
+                if (conf.phone) {
+                    const cleanPh = cleanText(conf.phone);
+                    document.getElementById('userHeaderPhone').innerText = '📞 ' + cleanPh;
+                    document.getElementById('userHeaderPhone').href = 'tel:' + cleanPh;
+                    document.getElementById('userFooterPhone').innerText = cleanPh;
+                    document.getElementById('userFloatCall').href = 'tel:' + cleanPh;
                 }
 
-                if (conf.phone && conf.phone.trim() !== '') {
-                    document.getElementById('userHeaderPhone').innerText = '📞 ' + conf.phone;
-                    document.getElementById('userHeaderPhone').href = 'tel:' + conf.phone;
-                    document.getElementById('userFooterPhone').innerText = conf.phone;
-                    document.getElementById('userFloatCall').href = 'tel:' + conf.phone;
-                    document.getElementById('userSocialCall').href = 'tel:' + conf.phone;
-                }
-
+                // Social Links Toggles
                 const ig = document.getElementById('userInstagramLink');
-                if (conf.instagram && conf.instagram.trim() !== '') {
-                    ig.href = conf.instagram;
-                    ig.style.display = 'flex';
-                } else { ig.style.display = 'none'; }
+                if (conf.instagram) { ig.href = conf.instagram; ig.style.display = 'flex'; } else { ig.style.display = 'none'; }
 
                 const fb = document.getElementById('userFacebookLink');
-                if (conf.facebook && conf.facebook.trim() !== '') {
-                    fb.href = conf.facebook;
-                    fb.style.display = 'flex';
-                } else { fb.style.display = 'none'; }
+                if (conf.facebook) { fb.href = conf.facebook; fb.style.display = 'flex'; } else { fb.style.display = 'none'; }
 
-                const em = document.getElementById('userEmailBtn');
-                if (conf.email && conf.email.trim() !== '') {
-                    em.href = 'mailto:' + conf.email;
-                    em.style.display = 'flex';
-                } else { em.style.display = 'none'; }
+                const yt = document.getElementById('userYoutubeLink');
+                if (conf.youtube) { yt.href = conf.youtube; yt.style.display = 'flex'; } else { yt.style.display = 'none'; }
             }
         });
 
-        // 2. RENDER VENUES LIST (MAIN HUB)
+        // 2. VENUES REALTIME SYNC
         const grid = document.getElementById('venuesGrid');
-        db.ref('tulsi_venues').on('value', (snapshot) => {
+        db.ref('tulsi_venues').on('value', (snap) => {
             grid.innerHTML = '';
-            if (snapshot.exists()) {
-                loadedVenues = snapshot.val();
+            if (snap.exists()) {
+                loadedVenues = snap.val();
                 Object.keys(loadedVenues).forEach((key) => {
                     const item = loadedVenues[key];
                     const card = document.createElement('div');
                     card.className = 'venue-hub-card';
-                    card.onclick = () => { playClick(); openVenueDetail(key); };
+                    card.onclick = () => openVenueDetail(key);
+
+                    const btnText = cleanText(item.btnText) || 'Explore Details & Gallery';
+                    const btnStyle = item.btnColor ? `style="background: ${item.btnColor}; color: #030712;"` : '';
+
                     card.innerHTML = `
-                        <img src="${item.imageUrl}" class="venue-hub-img" alt="${item.title}">
+                        <img src="${item.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3'}" class="venue-hub-img" alt="${cleanText(item.title)}">
                         <div class="venue-hub-body">
-                            <h3>${item.title}</h3>
-                            <p class="venue-hub-location">📍 ${item.location || 'Siwan, Bihar'}</p>
-                            <div class="view-venue-btn">
-                                <span>Explore Details & Gallery</span>
+                            <h3>${cleanText(item.title)}</h3>
+                            <p class="venue-hub-location">📍 ${cleanText(item.location) || 'Siwan, Bihar'}</p>
+                            <div class="view-venue-btn" ${btnStyle}>
+                                <span>${btnText}</span>
                                 <span>➔</span>
                             </div>
                         </div>
@@ -648,21 +428,21 @@
                     grid.appendChild(card);
                 });
             } else {
-                grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); font-size: 1.1rem; padding: 40px;">Admin Panel se venue add karein.</p>';
+                grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); font-size: 1.1rem; padding: 40px;">Admin Panel se naya venue add karein.</p>';
             }
         });
 
-        // 3. OPEN VENUE DETAIL
-        function openVenueDetail(venueKey) {
-            const data = loadedVenues[venueKey];
+        // 3. OPEN VENUE DETAIL PAGE
+        function openVenueDetail(key) {
+            const data = loadedVenues[key];
             if (!data) return;
 
             document.getElementById('venue-hub-view').style.display = 'none';
             document.getElementById('venue-detail-view').style.display = 'block';
 
-            document.getElementById('detailTitle').innerText = data.title;
-            document.getElementById('detailAddress').innerText = "📍 Location: " + (data.location || "Siwan, Bihar");
-            document.getElementById('detailDesc').innerText = data.description || "Grand luxury banquet hall with world-class facilities and exquisite arrangements in Siwan.";
+            document.getElementById('detailTitle').innerText = cleanText(data.title);
+            document.getElementById('detailAddress').innerText = "📍 Location: " + (cleanText(data.location) || "Siwan, Bihar");
+            document.getElementById('detailDesc').innerText = data.description || "Grand wedding lawn & AC halls with royal amenities.";
             document.getElementById('detailImg').src = data.imageUrl;
             document.getElementById('detailCall').href = "tel:" + (data.phone || "8651222111");
 
@@ -670,146 +450,27 @@
             galGrid.innerHTML = '';
 
             if (data.gallery) {
-                Object.keys(data.gallery).forEach((photoKey) => {
-                    const photo = data.gallery[photoKey];
-                    const card = document.createElement('div');
-                    card.className = 'venue-gallery-card';
-                    card.innerHTML = `
-                        <img src="${photo.imageUrl}" alt="${photo.title || 'Venue Photo'}">
-                        <div class="venue-gallery-caption">${photo.title || 'Venue Special'}</div>
+                Object.keys(data.gallery).forEach((pKey) => {
+                    const photo = data.gallery[pKey];
+                    const pCard = document.createElement('div');
+                    pCard.className = 'venue-gallery-card';
+                    pCard.innerHTML = `
+                        <img src="${photo.imageUrl}" alt="Photo">
+                        ${photo.title ? `<div class="venue-gallery-caption">${cleanText(photo.title)}</div>` : ''}
                     `;
-                    galGrid.appendChild(card);
+                    galGrid.appendChild(pCard);
                 });
             } else {
-                galGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); font-size: 0.95rem;">Is venue ki additional gallery photos jald upload hongi.</p>';
+                galGrid.innerHTML = '<p style="grid-column:1/-1; color:var(--text-muted); font-size:0.95rem;">Is hall ki photos jald add hongi.</p>';
             }
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // BACK TO ALL VENUES
         function showHubView() {
             document.getElementById('venue-detail-view').style.display = 'none';
             document.getElementById('venue-hub-view').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // =========================================================
-        // 4. CHATBOT LOGIC (EXACT WORKING PATTERN + DEEP KNOWLEDGE)
-        // =========================================================
-        const chatWindow = document.getElementById('chatWindow');
-        const chatBody = document.getElementById('chatBody');
-        let chatHistory = [];
-        
-        // Split key pattern that works without GitHub blocks
-        const k1 = "gsk_";
-        const k2 = "Cy0mTydO2iLnXzuk5ogBWGdyb3FYE2AjWLZGvkCv6tHXtW4HKtK4";
-        const DEFAULT_GROQ_API_KEY = k1 + k2;
-
-        const systemPrompt = `You are the polite, welcoming and intelligent AI Booking Assistant for "Tulsi Events & Hotels Pvt. Ltd" located in Siwan, Bihar (Tagline: "घर जैसा व्यवहार पाएँ...").
-Phone: 8651222111. Address: Siwan, Bihar.
-
-KNOWLEDGE BASE & SERVICES:
-1. Venues & Halls: Fully Air-Conditioned (AC) Banquet Halls, Large Open Marriage Lawns, Engagement Halls, Birthday & Conference Halls.
-2. Hotel & Rooms: Luxury AC Rooms with modern amenities, 24/7 room service, VIP bride/groom changing suites.
-3. Complete Wedding Planning & Decor: Royal Stage Decoration, Fresh Flower Entry, Haldi & Mehndi Setup, Mandap Decor, LED Concert Lighting.
-4. Food & Catering: Pure & hygienic multi-cuisine catering, authentic live food counters, buffet setups, professional VIP service staff.
-5. DJ & Sound: High-bass professional sound setup, party lighting, truss setup.
-6. Facilities: Huge parking space, 24-hour power backup (generator), security CCTV.
-
-RULES:
-- Reply in pleasant Roman Hindi (Hinglish) or pure Hindi based on the user's language.
-- Keep answers concise, clear, polite and encouraging.
-- Always recommend calling the official number 📞 8651222111 for date availability, hall visits and customized package discounts.`;
-
-        function getSmartFallbackReply(userText) {
-            const text = userText.toLowerCase();
-
-            if (text.includes("hi") || text.includes("hello") || text.includes("hey") || text.includes("नमस्ते") || text.includes("प्रणाम")) {
-                return "Namaste! 🙏 Tulsi Events & Hotels me aapka swagat hai. Hum aapki wedding, AC banquet hall ya hotel room booking me kaise madad kar sakte hain?";
-            }
-            if (text.includes("address") || text.includes("location") || text.includes("kaha") || text.includes("kahan") || text.includes("पता") || text.includes("jagah")) {
-                return "📍 Hamara pata: Tulsi Events & Hotels Pvt. Ltd, Siwan, Bihar. Location visit ya directions ke liye call karein: 📞 8651222111.";
-            }
-            if (text.includes("price") || text.includes("rate") || text.includes("cost") || text.includes("kharch") || text.includes("kitna") || text.includes("daam") || text.includes("रुपया") || text.includes("budget")) {
-                return "Hamare paas wedding lawn, AC hall aur complete catering ke best customized packages uplabdh hain. Dates aur best discount ke liye manager ko call karein: 📞 8651222111.";
-            }
-            if (text.includes("hall") || text.includes("venue") || text.includes("lawn") || text.includes("मैरिज") || text.includes("हॉल")) {
-                return "Hamare paas spacious Central AC Banquet Halls aur grand wedding lawn hain jisme 100 se lekar 2000+ guests ki capacity aur car parking uplabdh hai. Booking: 📞 8651222111.";
-            }
-            if (text.includes("room") || text.includes("hotel") || text.includes("stay") || text.includes("कमरा")) {
-                return "Hamare hotel me fully furnished Deluxe AC rooms, 24x7 room service aur VIP bride/groom suites uplabdh hain. Booking: 📞 8651222111.";
-            }
-            if (text.includes("catering") || text.includes("food") || text.includes("khana") || text.includes("buffet") || text.includes("खाना")) {
-                return "Hum multi-cuisine royal catering, authentic live counters aur VIP waiter service provide karte hain. Swadisht khana aur shandar arrangement hamari pehchan hai!";
-            }
-            if (text.includes("decor") || text.includes("stage") || text.includes("flower") || text.includes("light") || text.includes("haldi") || text.includes("mehndi")) {
-                return "Hum Royal Stage Decoration, Flower entry, Haldi & Mehndi themes aur concert lighting arrange karte hain. Hamari gallery me real photos dekh sakte hain!";
-            }
-            if (text.includes("book") || text.includes("call") || text.includes("contact") || text.includes("number") || text.includes("baat")) {
-                return "Aap seedhe humare booking office par call kar sakte hain: 📞 8651222111 ('घर जैसा व्यवहार पाएँ...')";
-            }
-
-            return "Aapki requirement note kar li gayi hai! Hall availability aur turant booking details ke liye humare official number par call karein: 📞 8651222111.";
-        }
-
-        function toggleChat() {
-            if(chatWindow.style.display === 'flex') {
-                chatWindow.style.display = 'none';
-            } else {
-                chatWindow.style.display = 'flex';
-                document.getElementById('userInput').focus();
-            }
-        }
-
-        function handleEnter(e) { if (e.key === 'Enter') sendMessage(); }
-
-        async function sendMessage() {
-            const input = document.getElementById('userInput');
-            const message = input.value.trim();
-            if (!message) return;
-
-            chatBody.innerHTML += `<div class="msg user">${message}</div>`;
-            input.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-            chatHistory.push({ role: "user", content: message });
-
-            const typingId = "typing-" + Date.now();
-            chatBody.innerHTML += `<div class="msg bot" id="${typingId}">...</div>`;
-            chatBody.scrollTop = chatBody.scrollHeight;
-
-            let botReply = "";
-            const activeKey = dynamicGroqKey || DEFAULT_GROQ_API_KEY;
-
-            try {
-                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                    method: "POST",
-                    headers: { 
-                        "Authorization": "Bearer " + activeKey, 
-                        "Content-Type": "application/json" 
-                    },
-                    body: JSON.stringify({ 
-                        model: "llama-3.1-8b-instant", 
-                        messages: [{ role: "system", content: systemPrompt }, ...chatHistory] 
-                    })
-                });
-
-                const data = await response.json();
-
-                if (response.ok && data.choices && data.choices.length > 0) {
-                    botReply = data.choices[0].message.content;
-                } else {
-                    botReply = getSmartFallbackReply(message);
-                }
-            } catch (error) {
-                botReply = getSmartFallbackReply(message);
-            } finally {
-                const typingElem = document.getElementById(typingId);
-                if (typingElem) typingElem.remove();
-
-                chatHistory.push({ role: "assistant", content: botReply });
-                chatBody.innerHTML += `<div class="msg bot">${botReply}</div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }
         }
     </script>
 </body>
