@@ -128,12 +128,41 @@
             border-bottom: 1px solid var(--border-gold);
             z-index: 100;
         }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
         .logo { 
             color: var(--gold-bright); 
             font-size: 1.25rem; 
             font-weight: 700; 
             cursor: pointer;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.35);
+        }
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .about-nav-btn {
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-bright);
+            padding: 7px 14px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.82rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s;
+        }
+        .about-nav-btn:hover {
+            background: var(--gold);
+            color: #030712;
+            box-shadow: 0 0 12px var(--gold-glow);
         }
         .header-phone { 
             background: linear-gradient(135deg, var(--gold-bright), var(--gold)); 
@@ -183,7 +212,7 @@
         }
 
         /* VENUES SECTION */
-        .section { padding: 40px 18px 80px; text-align: center; }
+        .section { padding: 40px 18px 50px; text-align: center; }
         .section h2 { 
             font-size: 2.2rem; 
             margin-bottom: 10px; 
@@ -209,20 +238,27 @@
             overflow: hidden; 
             box-shadow: 0 15px 40px rgba(0,0,0,0.6); 
             border: 1px solid var(--border-gold);
-            cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: left;
+            display: flex;
+            flex-direction: column;
         }
         .venue-hub-card:hover {
             transform: translateY(-6px);
             border-color: var(--gold);
             box-shadow: 0 15px 35px var(--gold-glow);
         }
-        .venue-hub-img { width: 100%; height: 220px; object-fit: cover; }
-        .venue-hub-body { padding: 20px; }
-        .venue-hub-body h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 8px; }
+        .venue-hub-img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; }
+        .venue-hub-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .venue-hub-body h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 8px; cursor: pointer; }
         .venue-hub-location { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px; }
         
+        .card-button-group {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
         .view-venue-btn {
             background: var(--gold);
             border: none;
@@ -234,6 +270,177 @@
             align-items: center;
             font-weight: 700;
             font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .view-venue-btn:hover {
+            filter: brightness(1.1);
+        }
+        .hotel-wa-enquiry-btn {
+            background: #25D366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hotel-wa-enquiry-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* INVESTMENT & PARTNERSHIP SECTION */
+        #investment-partnership-section {
+            padding: 40px 18px 80px;
+            max-width: 1200px;
+            margin: auto;
+            transition: order 0.3s ease;
+        }
+        .invest-card {
+            background: radial-gradient(circle at top right, rgba(22, 38, 70, 0.9), rgba(7, 14, 28, 0.95));
+            border: 1px solid var(--border-gold);
+            border-radius: 24px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        .invest-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+        }
+        .invest-badge {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-bright);
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .invest-card h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+        .invest-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 720px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+        .invest-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .invest-wa-btn {
+            background: #25D366;
+            color: #ffffff;
+            padding: 13px 26px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s;
+        }
+        .invest-wa-btn:hover { transform: translateY(-2px); }
+        .invest-call-btn {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold-bright);
+            padding: 13px 26px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .invest-call-btn:hover {
+            background: var(--gold);
+            color: #030712;
+        }
+
+        /* ABOUT US MODAL / POPUP */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            max-width: 650px;
+            width: 100%;
+            padding: 30px 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            position: relative;
+            animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes modalPop {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-gold);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-title {
+            color: var(--gold-bright);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .modal-content-text {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 10px;
+            white-space: pre-line;
         }
 
         /* VENUE DETAIL VIEW */
@@ -353,6 +560,7 @@
         @media (max-width: 768px) {
             .detail-img-banner { height: 230px; }
             .detail-title { font-size: 1.6rem; }
+            .about-nav-btn span { display: none; }
         }
     </style>
 </head>
@@ -360,25 +568,52 @@
 
     <!-- HEADER -->
     <header>
-        <div class="logo" id="siteLogo" onclick="showHubView()">✨ Tulsi Events</div>
-        <a href="tel:8651222111" class="header-phone" id="userHeaderPhone">📞 8651222111</a>
+        <div class="header-left">
+            <div class="logo" id="siteLogo" onclick="showHubView()">✨ Tulsi Events</div>
+        </div>
+        <div class="header-actions">
+            <!-- 1. ABOUT US ICON BUTTON IN TOP CORNER -->
+            <button class="about-nav-btn" onclick="openAboutModal()" title="About Us">
+                ℹ️ <span>About Us</span>
+            </button>
+            <a href="tel:8651222111" class="header-phone" id="userHeaderPhone">📞 8651222111</a>
+        </div>
     </header>
 
-    <div class="main-container">
+    <div class="main-container" style="display: flex; flex-direction: column;">
         <!-- HUB VIEW (ALL VENUES) -->
-        <div id="venue-hub-view">
-            <section class="hero">
+        <div id="venue-hub-view" style="display: flex; flex-direction: column;">
+            <section class="hero" id="heroSection">
                 <div class="badge" id="heroBadge">Banquet Hall & Hotel</div>
                 <h1 id="heroTitle">Tulsi Events & Hotels Pvt. Ltd</h1>
                 <p id="heroTagline">"घर जैसा व्यवहार पाएँ..."</p>
             </section>
 
-            <section class="section">
+            <section class="section" id="venuesSection">
                 <h2>Our Exclusive Venues</h2>
                 <p class="section-subtitle">सीवान में अपने किसी भी आयोजन के लिए वेन्यू चुनें</p>
                 
                 <div class="venue-hub-grid" id="venuesGrid">
                     <p style="grid-column: 1/-1; color: var(--text-muted);">वेन्यू लोड हो रहे हैं...</p>
+                </div>
+            </section>
+
+            <!-- 3. CONTACT FOR INVESTMENT & PARTNERSHIP (CUSTOMIZABLE VIA ADMIN PANEL) -->
+            <section id="investment-partnership-section">
+                <div class="invest-card">
+                    <div class="invest-badge" id="investBadge">Partnership & Growth</div>
+                    <h2 class="royal-title" id="investTitle">Contact for Investment & Partnership</h2>
+                    <p id="investDesc">
+                        Tulsi Events & Hotels Pvt. Ltd के साथ अपने व्यवसाय का विस्तार करें। यदि आप हमारे साथ नए वेन्यू, होटल लीज या पार्टनरशिप में निवेश करना चाहते हैं, तो हमसे सीधे संपर्क करें।
+                    </p>
+                    <div class="invest-btn-group">
+                        <a href="https://wa.me/918651222111?text=नमस्ते!%20मैं%20Tulsi%20Events%20के%20साथ%20Investment%20या%20Partnership%20के%20बारे%20में%20बात%20करना%20चाहता%20हूँ।" target="_blank" class="invest-wa-btn" id="investWaBtn">
+                            💬 WhatsApp for Investment
+                        </a>
+                        <a href="tel:8651222111" class="invest-call-btn" id="investCallBtn">
+                            📞 Direct Call
+                        </a>
+                    </div>
                 </div>
             </section>
         </div>
@@ -407,6 +642,19 @@
             <div class="venue-gallery-section">
                 <h3 class="venue-gallery-title royal-title">📸 Venue Photo Gallery</h3>
                 <div class="venue-gallery-grid" id="venueSpecificGallery"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT US MODAL -->
+    <div class="modal-overlay" id="aboutModal" onclick="closeAboutModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close-btn" onclick="closeAboutModal()">✕</button>
+            <h2 class="royal-title modal-title" id="modalAboutTitle">About Tulsi Events</h2>
+            <div class="modal-content-text" id="modalAboutContent">
+                तुलसी इवेंट्स एंड होटल्स (Tulsi Events & Hotels Pvt. Ltd) सीवान और आस-पास के क्षेत्रों में शादी-विवाह, रिसेप्शन, कॉरपोरेट मीटिंग्स एवं पारिवारिक आयोजनों का सबसे विश्वसनीय नाम है। 
+
+                हमारा उद्देश्य आपको आधुनिक सुविधाओं से लैस शाही बैंक्वेट हॉल्स, विशाल मैरिज लॉन और आरामदायक वातानुकूलित (AC) होटल रूम्स के साथ "घर जैसा व्यवहार" प्रदान करना है। हमारी अनुभवी टीम आपके हर खास मौके को यादगार बनाने के लिए 24x7 तत्पर रहती है।
             </div>
         </div>
     </div>
@@ -452,10 +700,18 @@
         let currentWhatsAppNumber = "8651222111";
 
         function createWhatsAppLink(number, customMsg) {
-            const cleanNum = number.replace(/[^0-9]/g, '');
+            const cleanNum = (number || "8651222111").replace(/[^0-9]/g, '');
             const finalNum = cleanNum.length === 10 ? '91' + cleanNum : cleanNum;
             const msg = encodeURIComponent(customMsg || "नमस्ते! मुझे Tulsi Events & Hotels में हॉल बुकिंग और तारीखों की जानकारी चाहिए।");
             return `https://wa.me/${finalNum}?text=${msg}`;
+        }
+
+        // ABOUT US MODAL FUNCTIONS
+        function openAboutModal() {
+            document.getElementById('aboutModal').style.display = 'flex';
+        }
+        function closeAboutModal(e) {
+            document.getElementById('aboutModal').style.display = 'none';
         }
 
         // 1. SYNC ALL STYLES, COLORS, AND HEADINGS FROM FIREBASE
@@ -507,11 +763,35 @@
                     document.getElementById('userHeaderPhone').innerText = '📞 ' + conf.phone;
                     document.getElementById('userHeaderPhone').href = 'tel:' + conf.phone;
                     document.getElementById('userFooterPhone').innerText = conf.phone;
+                    document.getElementById('investCallBtn').href = 'tel:' + conf.phone;
                 }
 
                 // WhatsApp Floating Button Link
                 currentWhatsAppNumber = conf.whatsapp || conf.phone || "8651222111";
                 document.getElementById('userFloatWhatsApp').href = createWhatsAppLink(currentWhatsAppNumber);
+
+                // About Us text from Admin Panel (if present)
+                if (conf.aboutText) {
+                    document.getElementById('modalAboutContent').innerText = conf.aboutText;
+                }
+                if (conf.aboutTitle) {
+                    document.getElementById('modalAboutTitle').innerText = conf.aboutTitle;
+                }
+
+                // Investment & Partnership custom text and links from Admin Panel
+                if (conf.investTitle) document.getElementById('investTitle').innerText = conf.investTitle;
+                if (conf.investDesc) document.getElementById('investDesc').innerText = conf.investDesc;
+                if (conf.investBadge) document.getElementById('investBadge').innerText = conf.investBadge;
+                
+                const investPhone = conf.investPhone || conf.whatsapp || conf.phone || "8651222111";
+                document.getElementById('investWaBtn').href = createWhatsAppLink(investPhone, "नमस्ते! मैं Tulsi Events & Hotels के साथ Investment या Partnership के बारे में चर्चा करना चाहता हूँ।");
+                if (conf.investPhone) document.getElementById('investCallBtn').href = 'tel:' + conf.investPhone;
+
+                // Admin Panel Order for Investment section (Move UP or DOWN)
+                const investSection = document.getElementById('investment-partnership-section');
+                if (conf.investOrder !== undefined) {
+                    investSection.style.order = conf.investOrder; // Admin panel se -1 karne pe upar, 1 ya 2 karne pe neeche
+                }
 
                 // Social Links
                 const ig = document.getElementById('userInstagramLink');
@@ -535,19 +815,30 @@
                     const item = loadedVenues[key];
                     const card = document.createElement('div');
                     card.className = 'venue-hub-card';
-                    card.onclick = () => openVenueDetail(key);
 
                     const btnText = item.btnText || 'Explore Details & Gallery';
                     const btnStyle = item.btnColor ? `style="background: ${item.btnColor}; color: #030712;"` : '';
 
+                    // Dedicated WhatsApp number for this specific hotel / venue
+                    const venuePhone = item.phone || currentWhatsAppNumber || "8651222111";
+                    const hotelWaLink = createWhatsAppLink(venuePhone, `नमस्ते! मुझे "${item.title}" की बुकिंग इन्क्वायरी करनी है। कृपया उपलब्ध तारीखें और दरें बताएं।`);
+
                     card.innerHTML = `
-                        <img src="${item.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3'}" class="venue-hub-img" alt="${item.title}">
+                        <img src="${item.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3'}" class="venue-hub-img" alt="${item.title}" onclick="openVenueDetail('${key}')">
                         <div class="venue-hub-body">
-                            <h3>${item.title}</h3>
+                            <h3 onclick="openVenueDetail('${key}')">${item.title}</h3>
                             <p class="venue-hub-location">📍 ${item.location || 'Siwan, Bihar'}</p>
-                            <div class="view-venue-btn" ${btnStyle}>
-                                <span>${btnText}</span>
-                                <span>➔</span>
+                            
+                            <div class="card-button-group">
+                                <button class="view-venue-btn" ${btnStyle} onclick="openVenueDetail('${key}')">
+                                    <span>${btnText}</span>
+                                    <span>➔</span>
+                                </button>
+                                
+                                <!-- 2. HAR HOTEL KE NICHE BOOKING ENQUIRY WHATSAPP LINK -->
+                                <a href="${hotelWaLink}" target="_blank" class="hotel-wa-enquiry-btn">
+                                    <span>💬 Booking Enquiry</span>
+                                </a>
                             </div>
                         </div>
                     `;
@@ -571,7 +862,7 @@
             document.getElementById('detailDesc').innerText = data.description || "Grand wedding lawn & AC halls with royal amenities.";
             document.getElementById('detailImg').src = data.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3';
             
-            const venuePhone = data.phone || "8651222111";
+            const venuePhone = data.phone || currentWhatsAppNumber || "8651222111";
             document.getElementById('detailCall').href = "tel:" + venuePhone;
             document.getElementById('detailWhatsApp').href = createWhatsAppLink(venuePhone, `नमस्ते! मुझे "${data.title}" हॉल की बुकिंग और तारीखों के बारे में जानकारी चाहिए।`);
 
@@ -597,7 +888,7 @@
 
         function showHubView() {
             document.getElementById('venue-detail-view').style.display = 'none';
-            document.getElementById('venue-hub-view').style.display = 'block';
+            document.getElementById('venue-hub-view').style.display = 'flex';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
