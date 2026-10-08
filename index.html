@@ -242,13 +242,14 @@
             text-align: left;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         .venue-hub-card:hover {
             transform: translateY(-6px);
             border-color: var(--gold);
             box-shadow: 0 15px 35px var(--gold-glow);
         }
-        .venue-hub-img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; }
+        .venue-hub-img { width: 100%; height: 220px; object-fit: cover; cursor: pointer; display: block; }
         .venue-hub-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
         .venue-hub-body h3 { font-size: 1.3rem; color: #ffffff; margin-bottom: 8px; cursor: pointer; }
         .venue-hub-location { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 18px; }
@@ -294,6 +295,35 @@
         .hotel-wa-enquiry-btn:hover {
             transform: scale(1.02);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        /* UPCOMING PROJECTS BADGE & STYLES */
+        .project-status-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(14, 165, 233, 0.85);
+            backdrop-filter: blur(8px);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 10px rgba(14, 165, 233, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+        .project-card-desc-preview {
+            color: #cbd5e1;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         /* INVESTMENT & PARTNERSHIP SECTION */
@@ -443,8 +473,8 @@
             white-space: pre-line;
         }
 
-        /* VENUE DETAIL VIEW */
-        #venue-detail-view {
+        /* VENUE & PROJECT DETAIL VIEW */
+        #venue-detail-view, #project-detail-view {
             display: none;
             padding: 25px 18px 60px;
             max-width: 1100px;
@@ -581,7 +611,7 @@
     </header>
 
     <div class="main-container" style="display: flex; flex-direction: column;">
-        <!-- HUB VIEW (ALL VENUES) -->
+        <!-- HUB VIEW (ALL VENUES & UPCOMING PROJECTS) -->
         <div id="venue-hub-view" style="display: flex; flex-direction: column;">
             <section class="hero" id="heroSection">
                 <div class="badge" id="heroBadge">Banquet Hall & Hotel</div>
@@ -589,12 +619,26 @@
                 <p id="heroTagline">"घर जैसा व्यवहार पाएँ..."</p>
             </section>
 
+            <!-- 1. OUR EXCLUSIVE VENUES (HOTELS & HALLS) -->
             <section class="section" id="venuesSection">
                 <h2>Our Exclusive Venues</h2>
                 <p class="section-subtitle">सीवान में अपने किसी भी आयोजन के लिए वेन्यू चुनें</p>
                 
                 <div class="venue-hub-grid" id="venuesGrid">
                     <p style="grid-column: 1/-1; color: var(--text-muted);">वेन्यू लोड हो रहे हैं...</p>
+                </div>
+            </section>
+
+            <!-- 2. OUR UPCOMING PROJECTS SECTION -->
+            <section class="section" id="upcomingProjectsSection" style="padding-top: 10px;">
+                <div style="display:inline-block; background:rgba(14, 165, 233, 0.15); border:1px solid #38bdf8; color:#38bdf8; padding:5px 16px; border-radius:30px; font-size:0.8rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">
+                    Future Horizons
+                </div>
+                <h2>🌟 Our Upcoming Projects</h2>
+                <p class="section-subtitle">सीवान एवं अन्य शहरों में हमारे आगामी वेन्यू और लक्ज़री प्रोजेक्ट्स</p>
+                
+                <div class="venue-hub-grid" id="projectsGrid">
+                    <p style="grid-column: 1/-1; color: var(--text-muted);">आगामी प्रोजेक्ट्स लोड हो रहे हैं...</p>
                 </div>
             </section>
 
@@ -627,7 +671,7 @@
                     <h2 class="detail-title royal-title" id="detailTitle"></h2>
                     <p class="detail-address" id="detailAddress"></p>
                     
-                    <div class="about-box">
+                    <div class="about-box" id="detailDescBox">
                         <h3 class="royal-title">🏛️ About This Venue & Facilities</h3>
                         <p id="detailDesc">वेन्यू की जानकारी लोड हो रही है...</p>
                     </div>
@@ -639,9 +683,38 @@
                 </div>
             </div>
 
-            <div class="venue-gallery-section">
+            <div class="venue-gallery-section" id="venueGalleryWrap">
                 <h3 class="venue-gallery-title royal-title">📸 Venue Photo Gallery</h3>
                 <div class="venue-gallery-grid" id="venueSpecificGallery"></div>
+            </div>
+        </div>
+
+        <!-- DETAIL VIEW FOR UPCOMING PROJECT (WITH ITS OWN GALLERY & DETAILS) -->
+        <div id="project-detail-view">
+            <button class="back-nav-btn" onclick="showHubView()">← Back to Home (वापस जाएं)</button>
+            <div class="detail-card">
+                <div style="position:relative;">
+                    <img id="projDetailImg" src="" alt="Project" class="detail-img-banner">
+                    <div class="project-status-badge" style="top:20px; right:20px; font-size:0.85rem; padding:6px 16px;">🚧 Upcoming Project</div>
+                </div>
+                <div class="detail-content">
+                    <h2 class="detail-title royal-title" id="projDetailTitle"></h2>
+                    <p class="detail-address" id="projDetailAddress"></p>
+                    
+                    <div class="about-box" id="projDescBox">
+                        <h3 class="royal-title">🏗️ Project Overview & Architecture</h3>
+                        <p id="projDetailDesc">प्रोजेक्ट का विवरण जल्द ही उपलब्ध होगा...</p>
+                    </div>
+
+                    <div class="cta-btn-group">
+                        <a id="projDetailWhatsApp" href="#" target="_blank" class="detail-wa-btn">💬 Enquire About This Project on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="venue-gallery-section" id="projGalleryWrap">
+                <h3 class="venue-gallery-title royal-title">📸 Project Visuals & 3D Renders</h3>
+                <div class="venue-gallery-grid" id="projectSpecificGallery"></div>
             </div>
         </div>
     </div>
@@ -697,6 +770,7 @@
         const db = firebase.database();
 
         let loadedVenues = {};
+        let loadedProjects = {};
         let currentWhatsAppNumber = "8651222111";
 
         function createWhatsAppLink(number, customMsg) {
@@ -790,7 +864,7 @@
                 // Admin Panel Order for Investment section (Move UP or DOWN)
                 const investSection = document.getElementById('investment-partnership-section');
                 if (conf.investOrder !== undefined) {
-                    investSection.style.order = conf.investOrder; // Admin panel se -1 karne pe upar, 1 ya 2 karne pe neeche
+                    investSection.style.order = conf.investOrder;
                 }
 
                 // Social Links
@@ -805,7 +879,7 @@
             }
         });
 
-        // 2. REALTIME MARRIAGE HALLS (HUB PAGE)
+        // 2. REALTIME MARRIAGE HALLS / VENUES (HUB PAGE)
         const grid = document.getElementById('venuesGrid');
         db.ref('tulsi_venues').on('value', (snap) => {
             grid.innerHTML = '';
@@ -819,15 +893,18 @@
                     const btnText = item.btnText || 'Explore Details & Gallery';
                     const btnStyle = item.btnColor ? `style="background: ${item.btnColor}; color: #030712;"` : '';
 
-                    // Dedicated WhatsApp number for this specific hotel / venue
                     const venuePhone = item.phone || currentWhatsAppNumber || "8651222111";
                     const hotelWaLink = createWhatsAppLink(venuePhone, `नमस्ते! मुझे "${item.title}" की बुकिंग इन्क्वायरी करनी है। कृपया उपलब्ध तारीखें और दरें बताएं।`);
 
+                    const imgTag = item.imageUrl ? `<img src="${item.imageUrl}" class="venue-hub-img" alt="${item.title || 'Venue'}" onclick="openVenueDetail('${key}')">` : '';
+                    const titleTag = item.title ? `<h3 onclick="openVenueDetail('${key}')">${item.title}</h3>` : '';
+                    const locTag = item.location ? `<p class="venue-hub-location">📍 ${item.location}</p>` : '';
+
                     card.innerHTML = `
-                        <img src="${item.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3'}" class="venue-hub-img" alt="${item.title}" onclick="openVenueDetail('${key}')">
+                        ${imgTag}
                         <div class="venue-hub-body">
-                            <h3 onclick="openVenueDetail('${key}')">${item.title}</h3>
-                            <p class="venue-hub-location">📍 ${item.location || 'Siwan, Bihar'}</p>
+                            ${titleTag}
+                            ${locTag}
                             
                             <div class="card-button-group">
                                 <button class="view-venue-btn" ${btnStyle} onclick="openVenueDetail('${key}')">
@@ -835,7 +912,6 @@
                                     <span>➔</span>
                                 </button>
                                 
-                                <!-- 2. HAR HOTEL KE NICHE BOOKING ENQUIRY WHATSAPP LINK -->
                                 <a href="${hotelWaLink}" target="_blank" class="hotel-wa-enquiry-btn">
                                     <span>💬 Booking Enquiry</span>
                                 </a>
@@ -849,22 +925,63 @@
             }
         });
 
-        // 3. OPEN SEPARATE VENUE PAGE
+        // 3. REALTIME UPCOMING PROJECTS (FULLY CUSTOMIZABLE)
+        const projGrid = document.getElementById('projectsGrid');
+        db.ref('tulsi_projects').on('value', (snap) => {
+            projGrid.innerHTML = '';
+            if (snap.exists()) {
+                loadedProjects = snap.val();
+                Object.keys(loadedProjects).forEach((key) => {
+                    const p = loadedProjects[key];
+                    const card = document.createElement('div');
+                    card.className = 'venue-hub-card';
+
+                    // Optional Image, Optional Title, Optional Location, Optional Description
+                    const imgUrl = p.imageUrl || 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80';
+                    const titleHtml = p.title ? `<h3 onclick="openProjectDetail('${key}')">${p.title}</h3>` : '';
+                    const locHtml = p.location ? `<p class="venue-hub-location">📍 ${p.location}</p>` : '';
+                    const descHtml = p.description ? `<p class="project-card-desc-preview">${p.description}</p>` : '';
+                    const btnText = p.btnText || 'View Project & Gallery';
+
+                    card.innerHTML = `
+                        <div class="project-status-badge">🚧 Coming Soon</div>
+                        <img src="${imgUrl}" class="venue-hub-img" alt="${p.title || 'Upcoming Project'}" onclick="openProjectDetail('${key}')">
+                        <div class="venue-hub-body">
+                            ${titleHtml}
+                            ${locHtml}
+                            ${descHtml}
+                            <div class="card-button-group">
+                                <button class="view-venue-btn" style="background: linear-gradient(135deg, #38bdf8, #0284c7); color: #ffffff;" onclick="openProjectDetail('${key}')">
+                                    <span>${btnText}</span>
+                                    <span>➔</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    projGrid.appendChild(card);
+                });
+            } else {
+                projGrid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); font-size: 0.95rem; padding: 30px;">कोई आगामी प्रोजेक्ट अभी लिस्टेड नहीं है। (Admin Panel से जोड़ें)</p>';
+            }
+        });
+
+        // 4. OPEN SEPARATE VENUE PAGE
         function openVenueDetail(key) {
             const data = loadedVenues[key];
             if (!data) return;
 
             document.getElementById('venue-hub-view').style.display = 'none';
+            document.getElementById('project-detail-view').style.display = 'none';
             document.getElementById('venue-detail-view').style.display = 'block';
 
-            document.getElementById('detailTitle').innerText = data.title;
-            document.getElementById('detailAddress').innerText = "📍 Location: " + (data.location || "Siwan, Bihar");
+            document.getElementById('detailTitle').innerText = data.title || "Tulsi Venue";
+            document.getElementById('detailAddress').innerText = data.location ? "📍 Location: " + data.location : "";
             document.getElementById('detailDesc').innerText = data.description || "Grand wedding lawn & AC halls with royal amenities.";
             document.getElementById('detailImg').src = data.imageUrl || 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3';
             
             const venuePhone = data.phone || currentWhatsAppNumber || "8651222111";
             document.getElementById('detailCall').href = "tel:" + venuePhone;
-            document.getElementById('detailWhatsApp').href = createWhatsAppLink(venuePhone, `नमस्ते! मुझे "${data.title}" हॉल की बुकिंग और तारीखों के बारे में जानकारी चाहिए।`);
+            document.getElementById('detailWhatsApp').href = createWhatsAppLink(venuePhone, `नमस्ते! मुझे "${data.title || 'Tulsi Venue'}" हॉल की बुकिंग और तारीखों के बारे में जानकारी चाहिए।`);
 
             const galGrid = document.getElementById('venueSpecificGallery');
             galGrid.innerHTML = '';
@@ -886,8 +1003,54 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // 5. OPEN SEPARATE UPCOMING PROJECT PAGE
+        function openProjectDetail(key) {
+            const proj = loadedProjects[key];
+            if (!proj) return;
+
+            document.getElementById('venue-hub-view').style.display = 'none';
+            document.getElementById('venue-detail-view').style.display = 'none';
+            document.getElementById('project-detail-view').style.display = 'block';
+
+            document.getElementById('projDetailTitle').innerText = proj.title || "Upcoming Luxury Project";
+            document.getElementById('projDetailAddress').innerText = proj.location ? "📍 Location / Landmark: " + proj.location : "";
+            
+            const descEl = document.getElementById('projDetailDesc');
+            if (proj.description) {
+                descEl.innerText = proj.description;
+                document.getElementById('projDescBox').style.display = 'block';
+            } else {
+                document.getElementById('projDescBox').style.display = 'none';
+            }
+
+            document.getElementById('projDetailImg').src = proj.imageUrl || 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80';
+            
+            const proPhone = proj.phone || currentWhatsAppNumber || "8651222111";
+            document.getElementById('projDetailWhatsApp').href = createWhatsAppLink(proPhone, `नमस्ते! मुझे आपके अपकमिंग प्रोजेक्ट "${proj.title || 'Upcoming Project'}" के बारे में जानकारी / साझेदारी की चर्चा करनी है।`);
+
+            const galGrid = document.getElementById('projectSpecificGallery');
+            galGrid.innerHTML = '';
+
+            if (proj.gallery) {
+                Object.keys(proj.gallery).forEach((pKey) => {
+                    const photo = proj.gallery[pKey];
+                    const pCard = document.createElement('div');
+                    pCard.className = 'venue-gallery-card';
+                    pCard.innerHTML = `
+                        <img src="${photo.imageUrl}" alt="Photo">
+                        ${photo.title ? `<div class="venue-gallery-caption">${photo.title}</div>` : ''}
+                    `;
+                    galGrid.appendChild(pCard);
+                });
+            } else {
+                galGrid.innerHTML = '<p style="grid-column:1/-1; color:var(--text-muted); font-size:0.95rem;">इस प्रोजेक्ट के डिज़ाइन और 3D रेंडर्स जल्द ही जोड़े जाएँगे।</p>';
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function showHubView() {
             document.getElementById('venue-detail-view').style.display = 'none';
+            document.getElementById('project-detail-view').style.display = 'none';
             document.getElementById('venue-hub-view').style.display = 'flex';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
